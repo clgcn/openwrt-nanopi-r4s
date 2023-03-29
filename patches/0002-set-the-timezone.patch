@@ -1,0 +1,26 @@
+From 21708eda93b6e9b3da8188a45728e2c3f8ee6414 Mon Sep 17 00:00:00 2001
+From: GitHub Action <action@github.com>
+Date: Fri, 4 Mar 2022 12:12:27 +0800
+Subject: [PATCH 2/6] set the timezone
+
+---
+ package/base-files/files/bin/config_generate | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/package/base-files/files/bin/config_generate b/package/base-files/files/bin/config_generate
+index 2778adec70..aad9972f96 100755
+--- a/package/base-files/files/bin/config_generate
++++ b/package/base-files/files/bin/config_generate
+@@ -302,7 +302,8 @@ generate_static_system() {
+ 		delete system.@system[0]
+ 		add system system
+ 		set system.@system[-1].hostname='OpenWrt'
+-		set system.@system[-1].timezone='UTC'
++		set system.@system[-1].timezone='CST-8'
++		set system.@system[-1].zonename='Asia/Shanghai'
+ 		set system.@system[-1].ttylogin='0'
+ 		set system.@system[-1].log_size='64'
+ 		set system.@system[-1].urandom_seed='0'
+-- 
+2.25.1
+

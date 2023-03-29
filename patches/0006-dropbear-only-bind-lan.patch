@@ -1,0 +1,22 @@
+From 08a41f7bf31c64720ccfe1f564f2621ec3d8f947 Mon Sep 17 00:00:00 2001
+From: GitHub Action <action@github.com>
+Date: Fri, 4 Mar 2022 12:15:59 +0800
+Subject: [PATCH 6/6] dropbear only bind lan
+
+---
+ package/network/services/dropbear/files/dropbear.config | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/package/network/services/dropbear/files/dropbear.config b/package/network/services/dropbear/files/dropbear.config
+index 2139ba0bbe..e2a936d7af 100644
+--- a/package/network/services/dropbear/files/dropbear.config
++++ b/package/network/services/dropbear/files/dropbear.config
+@@ -2,4 +2,5 @@ config dropbear
+ 	option PasswordAuth 'on'
+ 	option RootPasswordAuth 'on'
+ 	option Port         '22'
++	option Interface 'lan'
+ #	option BannerFile   '/etc/banner'
+-- 
+2.25.1
+
