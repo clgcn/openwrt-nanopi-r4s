@@ -13,7 +13,7 @@ index b7713ebcc6..f1c310d977 100644
 +++ b/package/base-files/files/etc/hosts
 @@ -1,4 +1,5 @@
  127.0.0.1 localhost
-+172.16.1.1 openwrt
++192.168.1.254 openwrt
  
  ::1     localhost ip6-localhost ip6-loopback
  ff02::1 ip6-allnodes
