@@ -30,7 +30,7 @@ function init() {
 	)
 	sudo apt-get update
 	sudo apt-get install make gcc g++ libncurses5-dev unzip -y
-	sudo apt-get -y install subversion build-essential libncurses5-dev zlib1g-dev gawk git ccache gettext libssl-dev xsltproc zip wget-ssl libustream
+	sudo apt-get -y install subversion build-essential libncurses5-dev zlib1g-dev gawk git ccache gettext libssl-dev xsltproc zip
 	wget -O- https://raw.githubusercontent.com/friendlyarm/build-env-on-ubuntu-bionic/master/install.sh | bash
 	sudo apt-get autoremove --purge -y
 	sudo apt-get clean
