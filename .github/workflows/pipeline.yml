@@ -13,7 +13,8 @@ on:
       - "feeds.conf.default"
   schedule:
     - cron: '00 18 * * 5'
-  workflow_dispatch: 
+  workflow_run: 
+
 
 jobs:
   build:
