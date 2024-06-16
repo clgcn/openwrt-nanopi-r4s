@@ -6,7 +6,7 @@ function cleanup() {
 		sudo rm -rf /swapfile
 	fi
 	sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
-  command -v docker && docker rmi $(docker images -q) >/dev/null 2>&1 || true
+	command -v docker && docker rmi $(docker images -q) >/dev/null 2>&1 || true	
 	sudo apt-get -y purge \
 		azure-cli* \
 		ghc* \
@@ -18,8 +18,8 @@ function cleanup() {
 		dotnet* \
 		openjdk* \
 		mysql* \
-		php* || true
-	sudo apt autoremove --purge -y || true
+		php*
+	sudo apt autoremove --purge -y
 }
 
 function init() {
@@ -29,7 +29,8 @@ function init() {
 		sudo apt-get clean all
 	)
 	sudo apt-get update
-	sudo apt-get -y install subversion build-essential clang flex bison g++ gawk gcc-multilib g++-multilib gettext git libncurses5-dev libssl-dev python3-setuptools rsync swig unzip zlib1g-dev file wget
+	sudo apt-get install make gcc g++ libncurses5-dev unzip -y
+	sudo apt-get -y install subversion build-essential libncurses5-dev zlib1g-dev gawk git ccache gettext libssl-dev xsltproc zip
 	wget -O- https://raw.githubusercontent.com/friendlyarm/build-env-on-ubuntu-bionic/master/install.sh | bash
 	sudo apt-get autoremove --purge -y
 	sudo apt-get clean
