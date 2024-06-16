@@ -1,1 +1,1 @@
-src-git clgcn https://github.com/clgcn/openwrt-package.git
+src-git immortalwrt https://github.com/immortalwrt/luci.git
