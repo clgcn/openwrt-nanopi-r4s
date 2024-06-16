@@ -6,7 +6,7 @@ function cleanup() {
 		sudo rm -rf /swapfile
 	fi
 	sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
-	command -v docker && docker rmi $(docker images -q) 2>&1 /dev/null
+  command -v docker && docker rmi $(docker images -q) >/dev/null 2>&1
 	sudo apt-get -y purge \
 		azure-cli* \
 		ghc* \
