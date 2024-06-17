@@ -5,9 +5,6 @@
 		},
 		{
 			"path": "../openwrt-package"
-		},
-		{
-			"path": "../../../luci-app-nfs-new"
 		}
 	],
 	"settings": {}
