@@ -18,8 +18,8 @@ function cleanup() {
 		dotnet* \
 		openjdk* \
 		mysql* \
-		php*
-	sudo apt autoremove --purge -y
+		php* || true
+	sudo apt autoremove --purge -y || true
 }
 
 function init() {
