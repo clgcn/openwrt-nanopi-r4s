@@ -55,8 +55,8 @@ function build() {
 	[ -d ../files ] && cp -fr ../files ./files
 	[ -f ../config ] && cp -fr ../config ./.config
 	make defconfig
-	make download -j$(nproc) V=sc
-	make -j$(nproc) V=sc
+	make download -j$(nproc)
+	make -j$(nproc)
 	popd
 }
 
