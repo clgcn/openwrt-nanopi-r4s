@@ -1,1 +1,2 @@
-src-git clgcn https://github.com/clgcn/openwrt-package.git
+src-git passwall_luci https://github.com/xiaorouji/openwrt-passwall2.git
+src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages
