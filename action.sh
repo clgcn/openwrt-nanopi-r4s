@@ -28,10 +28,10 @@ function init() {
 		sudo rm -rf /etc/apt/sources.list.d/* /var/lib/apt/lists/*
 		sudo apt-get clean all
 	)
-	sudo apt-get update
-	sudo apt-get -y install build-essential clang flex bison g++ gawk gcc-multilib g++-multilib gettext git libncurses-dev libssl-dev python3-distutils python3-setuptools rsync swig unzip zlib1g-dev file wget
-	sudo apt-get autoremove --purge -y
-	sudo apt-get clean
+	sudo apt update
+	sudo apt install build-essential clang flex bison g++ gawk \
+	gcc-multilib g++-multilib gettext git libncurses-dev libssl-dev \
+	python3-distutils python3-setuptools rsync swig unzip zlib1g-dev file wget
 	sudo timedatectl set-timezone Asia/Shanghai
 	git config --global user.name "GitHub Action"
 	git config --global user.email "action@github.com"
@@ -50,6 +50,8 @@ function build() {
 	
 	./scripts/feeds update -a
 	./scripts/feeds install -a
+	rm -rf feeds/packages/lang/golang
+    git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
 	[ -d ../patches ] && git am -3 ../patches/*.patch
 	[ -d ../files ] && cp -fr ../files ./files
 	[ -f ../config ] && cp -fr ../config ./.config
