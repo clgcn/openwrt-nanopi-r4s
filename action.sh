@@ -30,7 +30,6 @@ function init() {
 	)
 	sudo apt-get update
 	sudo apt-get -y install build-essential clang flex bison g++ gawk gcc-multilib g++-multilib gettext git libncurses-dev libssl-dev python3-distutils python3-setuptools rsync swig unzip zlib1g-dev file wget
-	wget -O- https://raw.githubusercontent.com/friendlyarm/build-env-on-ubuntu-bionic/master/install.sh | bash
 	sudo apt-get autoremove --purge -y
 	sudo apt-get clean
 	sudo timedatectl set-timezone Asia/Shanghai
