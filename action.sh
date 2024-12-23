@@ -5,8 +5,16 @@ function cleanup() {
 		sudo swapoff /swapfile
 		sudo rm -rf /swapfile
 	fi
-	sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
-	command -v docker && docker rmi $(docker images -q) >/dev/null 2>&1 || true	
+	sudo rm -rf /etc/apt/sources.list.d/* \
+	/usr/share/dotnet \
+	/usr/local/lib/android \
+	/opt/hostedtoolcache/CodeQL \
+	/usr/local/.ghcup \
+	/usr/share/swift \
+	/usr/local/lib/node_modules \
+	/usr/local/share/powershell \
+	/opt/ghc /usr/local/lib/heroku || true
+	command -v docker && docker rmi $(docker images -q)
 	sudo apt-get -y purge \
 		azure-cli* \
 		ghc* \
@@ -20,6 +28,7 @@ function cleanup() {
 		mysql* \
 		php* || true
 	sudo apt autoremove --purge -y || true
+	df -h
 }
 
 function init() {
@@ -28,11 +37,15 @@ function init() {
 		sudo rm -rf /etc/apt/sources.list.d/* /var/lib/apt/lists/*
 		sudo apt-get clean all
 	)
-	sudo apt-get update
-	sudo apt-get -y install build-essential clang flex bison g++ gawk gcc-multilib g++-multilib gettext git libncurses-dev libssl-dev python3-distutils python3-setuptools rsync swig unzip zlib1g-dev file wget
-	wget -O- https://raw.githubusercontent.com/friendlyarm/build-env-on-ubuntu-bionic/master/install.sh | bash
-	sudo apt-get autoremove --purge -y
-	sudo apt-get clean
+	sudo apt update -y
+	sudo apt full-upgrade -y
+	sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \
+	bzip2 ccache clang cmake cpio curl device-tree-compiler flex gawk gettext gcc-multilib g++-multilib \
+	git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libfuse-dev libglib2.0-dev libgmp3-dev \
+	libltdl-dev libmpc-dev libmpfr-dev libncurses-dev libncurses-dev libpython3-dev libreadline-dev \
+	libssl-dev libtool llvm lrzsz genisoimage msmtp ninja-build p7zip p7zip-full patch pkgconf python3 \
+	python3-pyelftools python3-setuptools qemu-utils rsync scons squashfs-tools subversion swig texinfo \
+	uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
 	sudo timedatectl set-timezone Asia/Shanghai
 	git config --global user.name "GitHub Action"
 	git config --global user.email "action@github.com"
@@ -44,7 +57,7 @@ function build() {
 		git pull
 		popd
 	else
-		git clone -b openwrt-23.05 https://github.com/openwrt/openwrt.git ./openwrt
+		git clone https://github.com/coolsnowwolf/lede.git ./openwrt
 		[ -f ./feeds.conf.default ] && cat ./feeds.conf.default >> ./openwrt/feeds.conf.default
 	fi
 	pushd openwrt
