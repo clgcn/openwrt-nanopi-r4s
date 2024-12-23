@@ -50,6 +50,22 @@ CONFIG_PACKAGE_libopenssl-afalg=y
 CONFIG_PACKAGE_libopenssl-conf=y
 CONFIG_PACKAGE_libopenssl-devcrypto=y
 CONFIG_PACKAGE_libopenssl-legacy=y
+
+# qbittorrent
+CONFIG_PACKAGE_qbittorrent=y
+CONFIG_PACKAGE_luci-app-qbittorrent=y
+CONFIG_PACKAGE_luci-i18n-qbittorrent-zh-cn=y
+
+# webdav
+CONFIG_PACKAGE_gowebdav=y
+CONFIG_PACKAGE_luci-app-gowebdav=y
+CONFIG_PACKAGE_luci-i18n-gowebdav-zh-cn=y
+
+# alist
+CONFIG_PACKAGE_alist=y
+CONFIG_PACKAGE_luci-app-alist=y
+CONFIG_PACKAGE_luci-i18n-alist-zh-cn=y
+
 #mount
 CONFIG_PACKAGE_block-mount=y
 CONFIG_PACKAGE_libmount=y
