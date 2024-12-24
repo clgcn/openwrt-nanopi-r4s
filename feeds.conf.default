@@ -1,3 +1,3 @@
 src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main
 src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2.git;main
-src-git other https://github.com/clg/openwrt-nanopi-r4s-package.git;main
+src-git openwrt-nanopi-r4s-package https://github.com/clg/openwrt-nanopi-r4s-package.git;main
