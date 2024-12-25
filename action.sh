@@ -5,8 +5,6 @@ function cleanup() {
 	sudo swapoff -a
 	sudo rm -f /swapfile
 	sudo apt clean
-	docker rmi $(docker image ls -aq)
-	df -h
 	sudo rm -rf /etc/apt/sources.list.d/* \
 	/usr/share/dotnet \
 	/usr/local/lib/android \
@@ -16,7 +14,7 @@ function cleanup() {
 	/usr/local/lib/node_modules \
 	/usr/local/share/powershell \
 	/opt/ghc /usr/local/lib/heroku
-	command -v docker && docker rmi $(docker images -q)
+	command -v docker && docker rmi $(docker images -q) || true
 	sudo apt-get -y purge \
 		azure-cli* \
 		ghc* \
