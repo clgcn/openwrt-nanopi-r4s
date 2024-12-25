@@ -1,10 +1,11 @@
 #!/bin/bash
 set -ex
 function cleanup() {
-	if [ -f /swapfile ]; then
-		sudo swapoff /swapfile
-		sudo rm -rf /swapfile
-	fi
+	df -h
+	sudo swapoff -a
+	sudo rm -f /swapfile
+	sudo apt clean
+	docker rmi $(docker image ls -aq)
 	df -h
 	sudo rm -rf /etc/apt/sources.list.d/* \
 	/usr/share/dotnet \
