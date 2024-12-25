@@ -5,8 +5,17 @@ function cleanup() {
 		sudo swapoff /swapfile
 		sudo rm -rf /swapfile
 	fi
-	sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
-	command -v docker && docker rmi $(docker images -q) >/dev/null 2>&1 || true	
+	df -h
+	sudo rm -rf /etc/apt/sources.list.d/* \
+	/usr/share/dotnet \
+	/usr/local/lib/android \
+	/opt/hostedtoolcache/CodeQL \
+	/usr/local/.ghcup \
+	/usr/share/swift \
+	/usr/local/lib/node_modules \
+	/usr/local/share/powershell \
+	/opt/ghc /usr/local/lib/heroku
+	command -v docker && docker rmi $(docker images -q)
 	sudo apt-get -y purge \
 		azure-cli* \
 		ghc* \
@@ -18,8 +27,9 @@ function cleanup() {
 		dotnet* \
 		openjdk* \
 		mysql* \
-		php* || true
-	sudo apt autoremove --purge -y || true
+		php*
+	sudo apt autoremove --purge -y
+	df -h
 }
 
 function init() {
