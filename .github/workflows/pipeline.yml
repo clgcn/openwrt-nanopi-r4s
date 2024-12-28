@@ -42,7 +42,7 @@ jobs:
       - name: Set Release Name
         id: artifact
         run: |
-          release_tag="$(date +%Y-%m-%d)"
+          release_tag="$(date +%Y-%m-%d_%H-%M-%S)"
           echo "##[set-output name=release_tag;]$release_tag"
 
       - name: Create Release
